@@ -30,7 +30,15 @@ public class EmployeeController {
         return employeeServices.getEmployeeById(id);
     }
 
+    @PostMapping
     public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO employeeDTO){
         return employeeServices.createNewEmployee(employeeDTO);
     }
+
+    @DeleteMapping(path = "/{id}")
+        public boolean deleteEmployeeById(@PathVariable Long id){
+       return employeeServices.deleteEmployeeById(id);
+    }
+
+
 }
