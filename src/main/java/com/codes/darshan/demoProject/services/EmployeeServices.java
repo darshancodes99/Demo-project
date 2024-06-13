@@ -34,6 +34,13 @@ public class EmployeeServices {
     public List<EmployeeDTO> getEmployeeById(){
        return employeeRepository.findAll().stream().map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class)).collect(Collectors.toList());
     }
+
+    public boolean deleteEmployeeById(Long id) {
+        boolean isPresent = employeeRepository.existsById(id);
+        if (!isPresent) return false;
+        employeeRepository.deleteById(id);
+       return true;
+    }
 }
 
 
